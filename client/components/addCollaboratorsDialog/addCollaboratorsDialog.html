@@ -1,0 +1,7 @@
+<template name="addCollaboratorsDialog">
+      <div class="popupControl" style="background:white;position:absolute;display:block;z-index:1001" id="addCollaboratorsDialog" ><h4>Type in names of users or other collaborations:<small><br>Use the tag <span style="font-style:italic;font-weight:bold;color:red;">public</span> to allow everyone see this post</small> </h4>
+         {{>selectCollaborators}}
+          <button id="addCollaboratorsDone" data-_id="{{_id}}" >Done</button>
+      </div>
+  <div id="scrim" style="position:fixed;left:0,top:0;width:100%;height100%;opacity=0.9;background-color:gray; z-index:500"></div>
+</template>

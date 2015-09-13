@@ -1,0 +1,12 @@
+<template name="collaborationTagList">
+
+  <span class="collaborationTagList">
+      {{#each collaboration}}
+          <a href="{{collaborationLink}}" class="post-collaboration">{{collaborationName}}</a>
+      {{/each}}
+      <span class="collaborationTagListEditor">
+          <a class='addCollaborators'> <small><i class="fa fa-tags fa-1"  title="add collaboration"></i></small> </a>
+      </span>
+  </span>
+
+</template>

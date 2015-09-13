@@ -1,0 +1,31 @@
+
+<template name="collaborationReview">
+   <h3 class="short" style="color:white;text-align:center; margin:10px; padding:0; font-size:26px;" >
+   The following individuals would like to join {{name}}
+   Collaboration</h3>
+   <div class="basicPanel">
+   <form>
+   <table>
+    {{#each requests}}
+    <tr>
+        <th> {{this}} </th>
+        <th> <label class="radio-inline"><input type="radio" class="underReview" name="{{this}}" checked>Under review</label> </th>
+        <th> <label class="radio-inline"><input type="radio" class="notApproved" name="{{this}}">Not Appoved</label> </th>
+        <th> <label class="radio-inline"><input type="radio" class="approved" name="{{this}}">Approved</label> </th>
+    </tr>
+    {{/each }}
+   </table>
+       <button type="button"  onclick='$(".collapsed").hide()' class="btn btn-primary cancelAndGoCollaborationList" style="background-color:red;" > cancel </button>
+       <button type="button" class="btn btn-primary reviewCollaboration" style="background-color:green;" > done </button>
+   </form>
+   <!--
+   {{>collaborationForm doc=this type="update"}}
+
+       <a class='cancelAndGoCollaborationList' style="float:right"> <i class="fa fa-remove"  title="Cancel collaboration"></i> </a>
+       {{> quickForm id="editCollaboration" collection="Collaboration" validation="submit" doc=this type="update"
+            fields="name,description,collaborators,administrators,requiresAdministratorApprovalToJoin,invitations" schema=Schemas.collaboration }}
+       <button type="button" onclick='$(".collapsed").hide()'  class="btn btn-primary cancelAndGoCollaborationList"> cancel </button>
+       <button type="button" class="btn btn-primary removeCollaboration"> Remove </button>
+   -->
+   </div>
+</template>

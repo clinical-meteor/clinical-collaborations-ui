@@ -1,0 +1,17 @@
+<template name="collaborationMenu">
+  {{#if hasCollaboration}}
+    <div class="dropdown collaboration-menu header-submodule">
+      <a class="collaboration dropdown-top-level" href="/">{{_ "Collaborations"}}</a>
+      <div class="dropdown-menu">
+        <ul role="menu" aria-labelledby="dLabel">
+            <li><a class="dropdown-sub-level" href="/collaborationList/">List Collaborations</a></li>
+            <li><a class="dropdown-sub-level" href="/collaboration/">See all Posts from all Collaborations</a></li>
+
+          {{# each collaboration}}
+            <li><a class="dropdown-sub-level" href="{{collaborationLink}}">{{name}}</a></li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  {{/if}}
+</template>

@@ -1,0 +1,128 @@
+
+.post-info {
+  padding: 2px !important;
+}
+
+.collaboration.posts-wrapper .grid .grid-module {
+  background: transparent;
+  box-shadow: none;
+}
+
+.collaboration-focus {
+  border: 2px solid red;
+  box-shadow:0 1px 3px rgba(26,53,71,.08), 0 0 0 1px rgba(26,53,71,.04), 0 1px 1px rgba(26,53,71,.06);
+}
+
+.collaboration-h3 {
+}
+
+
+.basicPanel {
+    padding: 10px !important;
+    margin: 10px !important;
+    background-color: white;
+    margin:10px;
+}
+
+.select2-container-multi {
+    padding: 0 !important;
+}
+
+
+.collaborationGridTitle {
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 30pt;
+  text-align: center;
+  padding: 20px;
+}
+
+.collaboration.posts.list {
+  display:block;
+  box-sizing:border-box;
+}
+.collaborationMarquee {
+  width: 315px;
+  min-height:420px;
+  padding-top:10px;
+  margin:5px;
+  float:left;
+  box-sizing:border-box;
+}
+.collaboration.post .modules-group {
+  display: table-cell;
+  vertical-align: middle;
+  color: #427fed;
+  cursor: pointer;
+
+}
+.collaboration.post:first-child {
+  border-radius:none;
+}
+.collaboration.post {
+  box-shadow:0 1px 3px rgba(26,53,71,.08), 0 0 0 1px rgba(26,53,71,.04), 0 1px 1px rgba(26,53,71,.06);
+  border-bottom:none;
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  -ms-border-radius:3px;
+  -o-border-radius:3px;
+  border-radius:3px;
+  background: white;
+  margin: 5px;
+  padding: 20px;
+}
+.collaboration.post-thumbnail {
+  float:none;
+}
+.collaboration.post-thumbnail-link {
+  max-width:300px;
+  max-height:197px;
+}
+.collaboration.post .right-modules {
+  display:none;
+}
+.collaboration.post-actions.left-right.cell {
+  display:none;
+}
+.collaboration.post-rank {
+  display:none;
+}
+.collaboration.post-upvote {
+  display:none;
+}
+
+.collaboration-token {
+  font-size:14px;
+}
+
+.more-button {
+  float:left;
+  margin-left:90px !important;
+  vertical-align: middle !important;        
+  line-height: 35px !important;
+}
+.footer {
+  color:#e71e2f;
+  float:relative;
+}
+
+.collaboration-item {
+    background-color: lightsteelblue;
+    border: 2px solid black;
+    cursor: pointer;
+    margin: 4px!important;
+    padding: 8px!important;
+    width: 968px !important;
+
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  -ms-border-radius:5px;
+  -o-border-radius:5px;
+  border-radius:5px;
+}
+
+
+.collaboration-item div {
+    margin: 0px;
+}
+

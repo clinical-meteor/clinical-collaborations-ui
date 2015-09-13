@@ -1,0 +1,72 @@
+.addCollaborators {
+    width: 300px;
+}
+
+.post-collaborations {
+    text-align: right; }
+
+.post {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.postTitle {
+    display: inline-block;
+    padding: 10px;
+}
+
+.post:hover .postTitle {
+    border-radius: 10px;
+    border: 1px solid rgba(180,180,180,0.5);;
+    box-shadow:rgba(0,0,0,0.5) 0px 0px 6px; border-radius:12px;
+}
+
+.post-title {
+    font-color: black !important;
+}
+
+.post-collaboration {
+    display: inline-block;
+    font-size: 11px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: cornsilk;
+    opacity: 0.5;
+    padding: 0px 6px;
+    text-transform: uppercase;
+    font-weight: normal;
+    vertical-align: middle; }
+
+.post-collaboration:hover {
+    background: #DD3416;
+    color: white;
+}
+
+.popupControl {
+    border: 3px ridge lightsteelblue;
+    border-radius: 15px;
+    box-shadow: 10px 10px 5px #888888;
+    padding: 10px;
+
+}
+
+.popupControl input {
+    width: 100%;
+}
+
+.cover{ 
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.4);
+    z-index:5;
+    width:100%; 
+    height:100%;
+    display: block;
+    z-index: 999;
+}
+
+
+.list .collaborationTagListEditor {
+  opacity: 0;
+}
