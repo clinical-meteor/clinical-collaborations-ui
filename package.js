@@ -11,17 +11,17 @@ Package.describe({
 Package.onUse(function (api) {
 
   api.use([
-    'http',
-    'less',
-    'jquery',
-    'underscore',
-    'clinical:collaborations',
-    'templating',
-    'aldeed:template-extension',
-    'cfs:http-methods',
-    'aldeed:http',
-    'iron:router',
-    'pfafman:font-awesome-4'
+    'http@1.1.0',
+    'less@1.0.14',
+    'jquery@1.11.3_2',
+    'underscore@1.0.3',
+    'clinical:collaborations@1.0.0',
+    'templating@1.1.1',
+    'aldeed:template-extension@3.4.3',
+    'cfs:http-methods@0.0.29',
+    'aldeed:http@0.2.2',
+    'iron:router@1.0.9',
+    'pfafman:font-awesome-4@4.2.0_4'
   ], 'client');
 
 
@@ -29,8 +29,8 @@ Package.onUse(function (api) {
     'client/routes.js',
     'client/autoform.js',
 
-    'client/components/collaboration_item.js',
-    'client/components/post_collaborations.js',
+    'client/components/collaboration_item.css',
+    'client/components/post_collaboration.css',
 
     'client/components/addCollaboratorsDialog/addCollaboratorsDialog.less',
     'client/components/addCollaboratorsDialog/addCollaboratorsDialog.html',
