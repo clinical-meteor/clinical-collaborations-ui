@@ -11,8 +11,7 @@ Package.describe({
 Package.onUse(function (api) {
 
   api.use([
-    //'http@1.1.0',
-    'http',
+    'http@1.1.0',
     'less@1.0.14',
     'jquery@1.11.3_2',
     'underscore@1.0.3',
