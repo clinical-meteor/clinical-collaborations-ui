@@ -1,10 +1,14 @@
 <template name="collaborationGrid" xmlns="http://www.w3.org/1999/html">
-  <h3 class="collaborationGridTitle">Browse Collaborations</h3>
-  {{> collaborationAdd }}
-  <div class="collaboration posts list">
-    {{#each collaboration}}
-      {{> collaborationGridElement}}
-    {{/each}}
+  <div id="collaborationGrid" class="page">
+    <hr>
+    <br>
+    <!-- <h3>Browse Collaborations</h3> -->
+    <div id="collaborationGridElement" class="collaboration posts list">
+      {{#each collaboration}}
+        {{> collaborationGridElement}}
+      {{/each}}
+    </div>
+    <br>
   </div>
 </template>
 
@@ -17,11 +21,11 @@
         {{/if}}
         <H2><a  href="/collaboration/{{name}}">{{name}}</a></H2>
 
-            {{#if requiresAdministratorApprovalToJoin}}
+          {{#if requiresAdministratorApprovalToJoin}}
             <h6>Users require administrator approval</h6>
-            {{else}}
+          {{else}}
             <h6>Users may add themselves</h6>
-            {{/if}}
+          {{/if}}
 
         <p>
         {{description}}
@@ -74,8 +78,6 @@
             {{/if}}
         {{/if}}
 
-
     </div>
   </a>
-
 </template>

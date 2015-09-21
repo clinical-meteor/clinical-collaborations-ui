@@ -1,3 +1,6 @@
+/*.page{
+  padding: 40px;
+}*/
 
 .post-info {
   padding: 2px !important;
@@ -98,7 +101,7 @@
 .more-button {
   float:left;
   margin-left:90px !important;
-  vertical-align: middle !important;        
+  vertical-align: middle !important;
   line-height: 35px !important;
 }
 .footer {
@@ -125,4 +128,3 @@
 .collaboration-item div {
     margin: 0px;
 }
-

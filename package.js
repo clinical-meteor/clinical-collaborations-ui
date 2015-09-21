@@ -11,7 +11,8 @@ Package.describe({
 Package.onUse(function (api) {
 
   api.use([
-    'http@1.1.0',
+    //'http@1.1.0',
+    'http',
     'less@1.0.14',
     'jquery@1.11.3_2',
     'underscore@1.0.3',
@@ -22,7 +23,7 @@ Package.onUse(function (api) {
     'aldeed:http@0.2.2',
     'iron:router@1.0.9',
     'pfafman:font-awesome-4@4.2.0_4'
-  ], 'client');
+  ]);
 
 
   api.addFiles([
@@ -36,17 +37,17 @@ Package.onUse(function (api) {
     'client/components/addCollaboratorsDialog/addCollaboratorsDialog.html',
     'client/components/addCollaboratorsDialog/addCollaboratorsDialog.js',
 
-    'client/components/collaborationAdd/collaborationAdd.less',
-    'client/components/collaborationAdd/collaborationAdd.html',
-    'client/components/collaborationAdd/collaborationAdd.js',
+    // 'client/components/collaborationAdd/collaborationAdd.less',
+    // 'client/components/collaborationAdd/collaborationAdd.html',
+    // 'client/components/collaborationAdd/collaborationAdd.js',
 
     'client/components/collaborationEdit/collaborationEdit.less',
     'client/components/collaborationEdit/collaborationEdit.html',
     'client/components/collaborationEdit/collaborationEdit.js',
 
-    'client/components/collaborationForm/collaborationForm.less',
-    'client/components/collaborationForm/collaborationForm.html',
-    'client/components/collaborationForm/collaborationForm.js',
+    'client/components/upsertCollaborationForm/upsertCollaborationForm.less',
+    'client/components/upsertCollaborationForm/upsertCollaborationForm.html',
+    'client/components/upsertCollaborationForm/upsertCollaborationForm.js',
 
     'client/components/collaborationGrid/collaborationGrid.less',
     'client/components/collaborationGrid/collaborationGrid.html',
@@ -69,5 +70,9 @@ Package.onUse(function (api) {
     'client/components/selectCollaborators/selectCollaborators.js'
 
   ], ['client']);
+
+  api.addFiles([
+    'server/http.js',
+  ], 'server');
 
 });

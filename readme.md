@@ -18,7 +18,7 @@ meteor add clinical:collaborations-ui
   {{> addCollaboratorsDialog}}
   {{> collaborationAdd}}
   {{> collaborationEdit}}
-  {{> collaborationForm}}
+  {{> upsertCollaborationForm}}
   {{> collaborationGrid}}
   {{> collaborationMenu}}
   {{> collaborationReview}}

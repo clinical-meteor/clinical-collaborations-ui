@@ -1,4 +1,4 @@
-AutoForm.hooks({
-  editCollaboration: { onSuccess: goCollaborationlist },
-  addCollaboration: { onSuccess: goCollaborationlist }
-});
+// AutoForm.hooks({
+//   editCollaboration: { onSuccess: goCollaborationlist },
+//   addCollaboration: { onSuccess: goCollaborationlist }
+// });
