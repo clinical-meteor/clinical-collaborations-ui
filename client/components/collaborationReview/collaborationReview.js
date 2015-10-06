@@ -1,6 +1,6 @@
 
 Template.collaborationReview.events(  {
-    'click .cancelAndGoCollaborationList': goCollaborationlist ,
+    //'click .cancelAndGoCollaborationList': goCollaborationlist ,
 
     'click .reviewCollaboration': function(event, tmpl) {
 

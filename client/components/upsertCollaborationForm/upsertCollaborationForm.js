@@ -13,38 +13,50 @@ Template.upsertCollaborationForm.onDestroyed( function (){
 
 
 Template.upsertCollaborationForm.helpers({
-
+  getDoc: function(){
+    return this;
+  }
 });
 
 Template.upsertCollaborationForm.events({
   "click #upsertCollaborationButton": function (event, template){
-    console.log('click #upsertCollaborationButton');
+    event.preventDefault();
+
+    // console.log('click #upsertCollaborationButton');
 
     var newCollaboration = {
-      // name: $('input[name="url"]').val()
       isUnlisted: $('input[name="isUnlisted"]').is(":checked"),
       name: $('input[name="name"]').val(),
-      collaborators: [],
-      invitations: [],
+      collaborators: Collaboration.parse($('input[name="collaborators"]').val()),
+      administrators: Collaboration.parse($('input[name="administrators"]').val()),
+      invitations: Collaboration.parse($('input[name="invitations"]').val()),
       requests: [],
-      administrators: [],
+      //requests: Collaboration.parse($('input[name="requests"]').val()),
       requiresAdministratorApprovalToJoin: $('input[name="requiresAdministratorApprovalToJoin"]').is(":checked")
     };
 
-    newCollaboration.collaborators.push($('input[name="collaborators"]').val());
-    newCollaboration.invitations.push($('input[name="invitations"]').val());
-    newCollaboration.requests.push($('input[name="requests"]').val());
-    newCollaboration.administrators.push($('input[name="administrators"]').val());
+    // newCollaboration.collaborators.push($('input[name="collaborators"]').val());
+    // newCollaboration.invitations.push($('input[name="invitations"]').val());
+    // newCollaboration.requests.push($('input[name="requests"]').val());
+    // newCollaboration.administrators.push($('input[name="administrators"]').val());
 
-    console.log('newCollaboration', newCollaboration);
+    //Collaborations.create(newCollaboration);
 
-    Collaboration.create(newCollaboration, function (error, result){
+    // console.log('newCollaboration', newCollaboration);
+
+    // send the record to the server to be saved
+    Meteor.call('collaboration/create', newCollaboration, function (error, result) {
+      if (error) {
+        console.log('collaboration/create[error]');
+        console.log(error);
+      }
       if (result){
+        console.log('collaboration/create[result]', result);
         Router.go('/grid/collaborations');
       }
-      if (error) {
-        console.log('error creating new collaboration', error);
-      }
     });
+
+
+
   }
 });

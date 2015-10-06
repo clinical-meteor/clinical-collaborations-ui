@@ -64,48 +64,14 @@ function isCollaborator (id) {
   return false;
 }
 
-Template.collaborationGrid.hooks({
-  rendered: function Sel() {
-    var names = [];
-    Collaborations.find({}, {
-      fields: {
-        name: 1
-      }
-    }).forEach(function (c) {
-      names.push(c.name)
-    });
-    var moi = null;
-    var defaultCollaboration = null;
-    var u = Meteor.user();
-    var em = User.getEmails();
-    if (em)
-      moi = em[0];
-    if (u && u.profile)
-      defaultCollaboration = u.profile.defaultCollaboration;
 
-    names = names.sort();
-    console.log(names);
-    $(".collaboratorInitWithSelf").each(function () {
-      var $this = $(this);
-      if ($this.val() == "") {
-        $this.val(this.name == "collaborators" ? defaultCollaboration : moi);
-      }
-    });
-
-    // $(".collaboratorListClass").select2({
-    //   tags: names
-    // });
-    // $(".form-control[name*='.']").select2({
-    //   tags: names
-    // });
-    $(".collaboratorListClass").addClass("allowToGrow");
-    $(".form-control[name*='.']").addClass("allowToGrow");
-  }
-});
 
 
 
 Template.collaborationGrid.helpers({
+  owner: function (){
+    return "foo";
+  },
   collaboration: function () {
     return Collaborations.find({}, {
       sort: {
@@ -117,24 +83,24 @@ Template.collaborationGrid.helpers({
 
 });
 
-Template.collaborationGrid.hooks({
-  rendered: function () {
-    var focusOn = Session.get("FocusName");
-    console.log("collaborationGrid rendered focusOn", focusOn);
-    if (focusOn) {
-      var box = $("[name='" + focusOn + "']");
-      if (box && box.length > 0) {
-        $(".collaboration-focus").removeClass("collaboration-focus");
-        box.children().addClass("collaboration-focus");
-        var y = box.offset().top;
-        console.log("focusOn y=", y);
-        $('html, body').animate({
-          scrollTop: y
-        }, 2000);
-      }
-    }
-  }
-});
+// Template.collaborationGrid.hooks({
+//   rendered: function () {
+//     var focusOn = Session.get("FocusName");
+//     console.log("collaborationGrid rendered focusOn", focusOn);
+//     if (focusOn) {
+//       var box = $("[name='" + focusOn + "']");
+//       if (box && box.length > 0) {
+//         $(".collaboration-focus").removeClass("collaboration-focus");
+//         box.children().addClass("collaboration-focus");
+//         var y = box.offset().top;
+//         console.log("focusOn y=", y);
+//         $('html, body').animate({
+//           scrollTop: y
+//         }, 2000);
+//       }
+//     }
+//   }
+// });
 
 
 
@@ -235,7 +201,7 @@ function prettyList (cols) {
     }
   });
   var a = Object.keys(answerSet).sort();
-  console.log("cols", cols, a);
+  //console.log("prettyList", cols, a);
   return a.length > 0 ? a.join(" ") : " noone ";
 }
 

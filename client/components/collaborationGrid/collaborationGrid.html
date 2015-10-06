@@ -14,70 +14,80 @@
 
 
 <template name="collaborationGridElement">
-  <a name="{{name}}" class="collaboration" href="/collaboration/{{name}}">
+  <a id={{_id}} name="{{name}}" class="collaboration" href="/collaboration/{{name}}">
     <div class="collaborationMarquee collaboration post">
-        {{#if isAdministrator}}
-            <a class="controls" href="/collaboration-edit/{{name}}"> <i class="fa fa-edit fa-1g" style="float:right"  title="Edit Collaboration"></i></a>
-        {{/if}}
-        <H2><a  href="/collaboration/{{name}}">{{name}}</a></H2>
+        <div class="cardBody">
+                  {{#if isAdministrator}}
+                      <a class="controls" href="/collaboration-edit/{{name}}"> <i class="fa fa-edit fa-1g" style="float:right"  title="Edit Collaboration"></i></a>
+                  {{/if}}
+                  <h2><a  href="/collaboration/{{name}}">{{name}}</a></h2>
+                  <h5>{{owner}}</h5>
+                  <div id="circle">
 
-          {{#if requiresAdministratorApprovalToJoin}}
-            <h6>Users require administrator approval</h6>
+                  </div>
+
+                    {{#if requiresAdministratorApprovalToJoin}}
+                      <h6>Users require administrator approval</h6>
+                    {{else}}
+                      <h6>Users may add themselves</h6>
+                    {{/if}}
+
+                  <p>
+                  {{description}}
+                  </p>
+
+
+
+                  {{#if isUnlisted}}
+                  <h6>Collaboration is unlisted and only the collaborators and administrators can see it.</h6>
+                  {{/if}}
+
+                  <b>Collaborators</b> <div class="collaboration-token">{{collaborators}}</div><br/>
+
+
+
+                  {{#if isAdministrator}}
+                      <b>Administrators</b> <div class="collaboration-token wordwrap">{{administrators}}</div><br/>
+                      {{#if invitations}}
+                          <b>Invitations</b> <div class="collaboration-token wordwrap">{{invitations}}</div><br/>
+                      {{/if}}
+                      {{#if requests}}
+                      <center>
+                          <a href="/collaboration-review/{{name}}" data-collaborationName="{{name}}" id="leave" name="leave" type="button" class="btn">
+                              Review {{requests.length}} requests
+                          </a>
+                      </center>
+                      {{else}}
+                          no requests
+                      {{/if}}
+                  {{/if}}
+
+        </div>
+        <div class="cardFooter">
+          {{#if isMember}}
+              {{#if memberBecause}}
+                 <h6>
+                   You are a member of these collaborations which are members of this collaboration:
+                    {{#each memberBecause}}
+                    <li>
+                        {{this}}
+                    </li>
+                    {{/each}}
+                 </h6>
+              {{else}}
+                  <button data-collaborationName="{{name}}" id="leave" name="leave" type="button" class="btn btn-default btn-lg">Leave this collaboration</button>
+              {{/if}}
           {{else}}
-            <h6>Users may add themselves</h6>
+              {{#if requiresAdministratorApprovalToJoin}}
+                  <button data-collaborationName="{{name}}" id="apply" name="apply" type="button" class="btn btn-default btn-lg">Apply for membership</button>
+              {{else}}
+                  <button data-collaborationName="{{name}}" id="join" name="join" type="button" class="btn btn-default btn-lg">Join this collaboration</button>
+              {{/if}}
           {{/if}}
-
-        <p>
-        {{description}}
-        </p>
-
-        <center>
-        {{#if isMember}}
-            {{#if memberBecause}}
-               <h6 style="text-align: left !important;">
-               You are a member of these collaborations which are members of this collaboration:
-                {{#each memberBecause}}
-                <li>
-                    {{this}}
-                </li>
-                {{/each}}
-               </h6>
-            {{else}}
-                <button data-collaborationName="{{name}}" id="leave" name="leave" type="button" class="btn btn-default btn-lg">Leave this collaboration</button>
-            {{/if}}
-        {{else}}
-            {{#if requiresAdministratorApprovalToJoin}}
-                <button data-collaborationName="{{name}}" id="apply" name="apply" type="button" class="btn btn-default btn-lg">Apply for membership</button>
-            {{else}}
-                <button data-collaborationName="{{name}}" id="join" name="join" type="button" class="btn btn-default btn-lg">Join this collaboration</button>
-            {{/if}}
-        {{/if}}
-        </center>
-
-        {{#if isUnlisted}}
-        <h6>Collaboration is unlisted and only the collaborators and administrators can see it.</h6>
-        {{/if}}
-
-        <b>Collaborators</b> <div class="collaboration-token">{{collaborators}}</div><br/>
-
-
-
-        {{#if isAdministrator}}
-            <b>Administrators</b> <div class="collaboration-token wordwrap">{{administrators}}</div><br/>
-            {{#if invitations}}
-                <b>Invitations</b> <div class="collaboration-token wordwrap">{{invitations}}</div><br/>
-            {{/if}}
-            {{#if requests}}
-            <center>
-                <a href="/collaboration-review/{{name}}" data-collaborationName="{{name}}" id="leave" name="leave" type="button" class="btn">
-                    Review {{requests.length}} requests
-                </a>
-            </center>
-            {{else}}
-                no requests
-            {{/if}}
-        {{/if}}
+        </div>
 
     </div>
+
+
   </a>
 </template>
