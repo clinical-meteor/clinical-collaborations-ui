@@ -21,7 +21,8 @@ Package.onUse(function (api) {
     'cfs:http-methods@0.0.29',
     'aldeed:http@0.2.2',
     'iron:router@1.0.9',
-    'pfafman:font-awesome-4@4.2.0_4'
+    'pfafman:font-awesome-4@4.2.0_4',
+    'photonic:glass-ui@0.2.4'
   ]);
 
 

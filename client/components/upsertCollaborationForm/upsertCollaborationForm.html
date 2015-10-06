@@ -1,5 +1,5 @@
 <template name="upsertCollaborationForm">
-  <article id="upsertCollaborationForm" class="page">
+  <article id="upsertCollaborationForm" class="page" style="{{getOpacity}}">
     <h3>Add Collaborations</h3>
     {{#autoForm id="addCollaborationForm" doc=doc collection="Collaboration" validation="submit" type=type fields="isUnlisted,name,description,collaborators,requiresAdministratorApprovalToJoin,administrators,invitations" schema=Schemas.collaboration}}
       <!-- <fieldset> -->
