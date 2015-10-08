@@ -9,8 +9,9 @@ Package.describe({
 
 
 Package.onUse(function (api) {
-
+  api.versionsFrom('1.0.4');
   api.use([
+    'meteor-platform@1.2.2',
     'http@1.1.0',
     'less@1.0.14',
     'jquery@1.11.3_2',

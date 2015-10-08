@@ -1,4 +1,4 @@
-
+  Template.registerHelper("Schemas", function() { return Schemas});
 
    // Collaboration Grid
    Router.route('collaborationGrid', {
