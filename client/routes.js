@@ -1,29 +1,36 @@
-  Template.registerHelper("Schemas", function() { return Schemas});
+Template.registerHelper("Schemas", function () { return Schemas; });
 
-   // Collaboration Grid
-   Router.route('collaborationGrid', {
-     path: '/grid/collaborations/',
-     template: "collaborationGrid"
-   });
+ // Collaboration Grid
+Router.route('collaborationGrid', {
+  path: '/grid/collaborations/',
+  template: "collaborationGrid"
+});
 
-   // Add Collaboration
-   Router.route('addCollaboration', {
-     path: '/new/collaboration/',
-     template: "upsertCollaborationForm"
-   });
+ // Add Collaboration
+Router.route('addCollaboration', {
+  path: '/new/collaboration/',
+  template: "upsertCollaborationForm"
+});
 
-   // Add Collaboration
-   Router.route('viewCollaboration', {
-    path: '/collaboration/:collaborationName',
-    template: "upsertCollaborationForm",
-    data: function (){
-      var collection = Collaborations.find({name: this.params.collaborationName });
-      console.log('collection', collection.fetch());
-      return collection;
-    }
-  });
+// View Collaboration
+Router.route('/collaboration/:collaborationName', {
+  name: "viewCollaboration",
+  template: "upsertCollaborationForm",
+  data: function (){
+    var collection = Collaborations.find({name: this.params.collaborationName });
+    console.log('collection', collection.fetch());
+    return collection;
+  }
+});
 
-
+// View Collaboration
+Router.route('/view/collaboration/:collaborationId', {
+  name: "viewCollaborationById",
+  template: "upsertCollaborationForm",
+  data: function (){
+    return Collaborations.findOne({_id: this.params.collaborationId });
+  }
+});
 
 
 //
@@ -80,10 +87,10 @@
 //         if (isAdmin() || !col.requiresAdministratorApprovalToJoin) {
 //           if (confirm("You are not a member of the " + this.params.name +
 //               " collaboration. Would you like to join?")) {
-//             var cols = Meteor.call('joinCollaborationMethod', col._id,
+//             var cols = Meteor.call('collaboration/join', col._id,
 //               function (err) {
 //                 if (err) {
-//                   alert("joinCollaborationMethod failed: " + err)
+//                   alert("collaboration/join failed: " + err)
 //                   Router.go("collaborationList")
 //                 } else {
 //                   this.next();

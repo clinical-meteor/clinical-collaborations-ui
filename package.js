@@ -1,7 +1,7 @@
 
 Package.describe({
   name: 'clinical:collaborations-ui',
-  version: '1.1.2',
+  version: '1.1.3',
   summary: 'UI components for the ``clinical:collaborations`` package.',
   git: 'https://github.com/UCSC-MedBook/MedBook-Telescope/tree/master/packages/clinical-collaborations-ui',
   documentation: 'README.md'
@@ -9,11 +9,11 @@ Package.describe({
 
 
 Package.onUse(function (api) {
-  api.versionsFrom('1.0.4');
+  api.versionsFrom('1.1.0.2');
   api.use([
     'meteor-platform@1.2.2',
     'http@1.1.0',
-    'less@1.0.14',
+    'grove:less@0.1.1',
     'jquery@1.11.3_2',
     'underscore@1.0.3',
     'clinical:collaborations@1.0.0',
@@ -75,5 +75,7 @@ Package.onUse(function (api) {
   api.addFiles([
     'server/http.js',
   ], 'server');
+
+  api.imply('clinical:user-model');
 
 });

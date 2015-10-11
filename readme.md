@@ -12,6 +12,15 @@ meteor add clinical:collaborations-ui
 
 
 ========================================
+#### Blaze Helpers  
+
+````html
+{{#if isCollaborationAdmin }} ... {{/if}}
+{{#if isCollaborator }} ... {{/if}}
+{{#if isCollaborationMember}} ... {{/if}}
+````
+
+========================================
 #### Components
 
 ````html

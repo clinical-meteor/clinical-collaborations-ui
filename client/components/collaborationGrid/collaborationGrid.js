@@ -1,75 +1,8 @@
-function memberBecause(id) {
-  var col = Collaborations.findOne({
-    _id: id
-  });
-  if (col == null) return false;
-  var direct = _.intersection(getEmails(), col.collaborators);
-  var indirect = _.intersection(Meteor.user().profile.collaborations, col.collaborators);
-  console.log(col.name, "direct", direct, "indirect", indirect);
-
-  if ((direct.length === 0) && (indirect.length > 0)){
-    return indirect;
-  } else {
-    return null;
-  }
-}
-
-function isMember (id) {
-  var col = Collaborations.findOne({
-    _id: id
-  });
-  if (col == null) return false;
-
-  var user = Meteor.user();
-  if (user){
-    if (user.profile && user.profile.collaborations){
-      return user.profile.collaborations.indexOf(col.name) >= 0;
-    } else {
-      return false;
-    }
-  } else {
-    return false;
-  }
-
-}
-
-function isAdministrator (id) {
-  var col = Collaborations.findOne({
-    _id: id
-  });
-  if (col == null) return false;
-  var ad = col.administrators;
-  if (ad == null) return true;
-  var em = User.getEmails();
-
-  if (em && ad){
-    return _.intersection(ad, em).length > 0;
-  } else {
-    return false;
-  }
-}
-
-function isCollaborator (id) {
-  var col = Collaborations.findOne({
-    _id: id
-  });
-  if (col == null) return false;
-  var ad = col.administrators;
-  if (ad == null) return true;
-  var em = getEmails();
-
-  for (var i = 0; i < em.length; i++)
-    if (ad.indexOf(em[i]) >= 0)
-      return true;
-  return false;
-}
-
-
 
 
 
 Template.collaborationGrid.helpers({
-  owner: function (){
+  owner: function () {
     return "foo";
   },
   collaboration: function () {
@@ -107,18 +40,18 @@ Template.collaborationGrid.helpers({
 Template.collaborationGrid.events({
   'click button[name="join"]': function (evt) {
     evt.preventDefault();
-    Meteor.call('joinCollaborationMethod', this._id, function (err) {
+    Meteor.call('collaboration/join', this._id, function (err) {
       if (err) {
-        console.log ('joinCollaborationMethod error', err);
-        alert ("join failed");
+        console.log('collaboration/join error', err);
+        alert("join failed");
       } else {
-        alert ("You are now part of the collaboration");
+        alert("You are now part of the collaboration");
       }
     });
   },
   'click button[name="apply"]': function (evt) {
     evt.preventDefault();
-    Meteor.call('applyCollaborationMethod', this._id, function (err) {
+    Meteor.call('collaboration/apply', this._id, function (err) {
       if (err) {
         console.log('apply error', err);
         alert("apply failed");
@@ -129,11 +62,10 @@ Template.collaborationGrid.events({
   },
   'click button[name="leave"]': function (evt) {
     evt.preventDefault();
-
-    Meteor.call('leaveCollaborationMethod', this._id, function (err) {
+    Meteor.call('collaboration/leave', this._id, function (err) {
       if (err) {
-        console.log('leaveCollaborationMethod error', err);
-        alert("leaveCollaborationMethod failed");
+        console.log('collaboration/leave error', err);
+        alert("collaboration/leave failed");
       } else {
         alert("You have left the collaboration");
       }
@@ -145,7 +77,7 @@ Template.collaborationGrid.events({
     var name = $('#name').val();
     var slug = slugify(name);
 
-    Meteor.call('createCollaborationMethod', {
+    Meteor.call('collaboration/create', {
         name: name,
         slug: slug
       },
@@ -165,7 +97,7 @@ Template.collaborationGrid.events({
 
 
 
-function findUser (email) {
+function findUser(email) {
   return Meteor.users.findOne({
     "services.google.email": email
   });
@@ -180,7 +112,7 @@ function findUser (email) {
   // }
 }
 
-function prettyList (cols) {
+function prettyList(cols) {
   var answerSet = {};
   cols.map(function (col, i) {
     if (col.indexOf("@") < 0) {
@@ -215,9 +147,7 @@ Template.collaborationGridElement.helpers({
   collaborators: function () {
     return prettyList(this.collaborators);
   },
-  isAdministrator: function () {
-    return isAdministrator(this._id);
-  },
+
   requiresApproval: function () {
     console.log("requiresApproval", this, Collaborations.findOne({
       _id: this._id
@@ -232,21 +162,18 @@ Template.collaborationGridElement.helpers({
       _id: this._id
     });
     return col.isPrivate === true;
-  },
-  isMember: function () {
-    return isMember(this._id);
-  },
-  memberBecause: function () {
-    return memberBecause(this._id);
   }
 });
+
+
+
 
 Template.collaborationGridElement.events({
   'keyup input[id="addCollaborators"]': function () {
     Collaboration.addCollaborator();
   },
   'click .collaborationRemove': function (tmpl, vent) {
-    if (confirm( "Are you sure you want to remove " + this.name + "?")){
+    if (confirm("Are you sure you want to remove " + this.name + "?")) {
       Collaborations.remove({
         _id: this._id
       });

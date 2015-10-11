@@ -13,9 +13,8 @@ Template.upsertCollaborationForm.onDestroyed( function (){
 
 
 Template.upsertCollaborationForm.helpers({
-  getDoc: function(){
-    return this;
-  }
+
+
 });
 
 Template.upsertCollaborationForm.events({
