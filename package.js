@@ -76,6 +76,6 @@ Package.onUse(function (api) {
     'server/http.js',
   ], 'server');
 
-  api.imply('clinical:user-model');
+  // api.imply('clinical:user-model');
 
 });
