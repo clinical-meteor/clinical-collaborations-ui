@@ -33,6 +33,35 @@ Router.route('/view/collaboration/:collaborationId', {
 });
 
 
+// Collaboration Review
+Router.route('/collaboration-review/:name/', {
+  name: 'collaborationReviewRoute',
+  template: 'collaborationReview',
+  waitOn: function () {
+    return Meteor.subscribe('collaborations');
+  },
+  data: function () {
+    // SECURITY Put in admin check here
+    var coll = Collaborations.findOne({
+      name: this.params.name
+    });
+    console.log("collaboration-edit route", coll);
+    return coll;
+  },
+  onBeforeAction: function () {
+    // SECURITY Put in admin check here
+    var coll = Collaborations.findOne({
+      name: this.params.name
+    });
+    if (coll)
+      Session.set("EditCollaboration", coll)
+    this.next();
+  },
+  onAfterAction: function () {
+    Session.set('collaborationName', this.params.name);
+  }
+});
+
 //
 // // adminNav.push({
 // //   route: 'collaboration',
@@ -181,33 +210,7 @@ Router.route('/view/collaboration/:collaborationId', {
 //       */
 //     });
 //
-//     // Collaboration Review
-//     this.route('collaborationReview', {
-//       path: '/collaboration-review/:name/',
-//       waitOn: function () {
-//         return Meteor.subscribe('collaborations');
-//       },
-//       data: function () {
-//         // SECURITY Put in admin check here
-//         var coll = Collaborations.findOne({
-//           name: this.params.name
-//         });
-//         console.log("collaboration-edit route", coll);
-//         return coll;
-//       },
-//       onBeforeAction: function () {
-//         // SECURITY Put in admin check here
-//         var coll = Collaborations.findOne({
-//           name: this.params.name
-//         });
-//         if (coll)
-//           Session.set("EditCollaboration", coll)
-//         this.next();
-//       },
-//       onAfterAction: function () {
-//         Session.set('collaborationName', this.params.name);
-//       }
-//     });
+
 //
 //
 //
@@ -227,9 +230,3 @@ Router.route('/view/collaboration/:collaborationId', {
 //   });
 //
 // });
-//
-//
-// goCollaborationlist = function () {
-//   hideEditOrAddCollaboration();
-//   Router.go("collaborationList");
-// };

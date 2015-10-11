@@ -64,16 +64,26 @@ function isCollaborationMember (id) {
 }
 
 function isCollaborationAdmin (collaborationId) {
-  var collaborations = Collaborations.findOne({
+  process.env.DEBUG && console.log('isCollaborationAdmin', collaborationId);
+
+  var collaboration = Collaborations.findOne({
     _id: collaborationId
   });
-  if (collaborations == null) return false;
-  var admins = collaborations.administrators;
-  if (admins == null) return true;
-  var emails = User.getEmails();
 
-  if (emails && admins) {
-    return _.intersection(admins, emails).length > 0;
+  if (collaboration === null){
+    return false;
+  }
+
+  // var admins = collaboration.administrators;
+  // if (admins == null) return true;
+  if (collaboration.administrators === null) {
+    return true;
+  }
+  var emails = Meteor.user().getEmails();
+  process.env.DEBUG && console.log('emails', emails);
+
+  if (emails && collaboration.administrators) {
+    return _.intersection(collaboration.administrators, emails).length > 0;
   } else {
     return false;
   }

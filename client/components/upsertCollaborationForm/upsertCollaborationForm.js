@@ -18,6 +18,9 @@ Template.upsertCollaborationForm.helpers({
 });
 
 Template.upsertCollaborationForm.events({
+  'click .cancelAndGoCollaborationList': function (){
+    Router.go('/grid/collaborations');
+  },
   "click #upsertCollaborationButton": function (event, template){
     event.preventDefault();
 
@@ -54,8 +57,5 @@ Template.upsertCollaborationForm.events({
         Router.go('/grid/collaborations');
       }
     });
-
-
-
   }
 });
