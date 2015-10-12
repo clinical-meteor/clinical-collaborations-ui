@@ -79,11 +79,13 @@ function isCollaborationAdmin (collaborationId) {
   if (collaboration.administrators === null) {
     return true;
   }
-  var emails = Meteor.user().getEmails();
-  process.env.DEBUG && console.log('emails', emails);
+  if (Meteor.user()) {
+    var emails = Meteor.user().getEmails();
+    process.env.DEBUG && console.log('emails', emails);
 
-  if (emails && collaboration.administrators) {
-    return _.intersection(collaboration.administrators, emails).length > 0;
+    if (emails && collaboration.administrators) {
+      return _.intersection(collaboration.administrators, emails).length > 0;
+    };
   } else {
     return false;
   }
