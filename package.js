@@ -66,9 +66,16 @@ Package.onUse(function (api) {
     'client/components/collaborationTagList/collaborationTagList.html',
     'client/components/collaborationTagList/collaborationTagList.js',
 
+    'client/components/collaborationPicklistModal/collaborationPicklistModal.less',
+    'client/components/collaborationPicklistModal/collaborationPicklistModal.html',
+    'client/components/collaborationPicklistModal/collaborationPicklistModal.js',
+
     'client/components/selectCollaborators/selectCollaborators.less',
     'client/components/selectCollaborators/selectCollaborators.html',
     'client/components/selectCollaborators/selectCollaborators.js'
+
+
+
 
   ], ['client']);
 
@@ -78,4 +85,5 @@ Package.onUse(function (api) {
 
   // api.imply('clinical:user-model');
 
+  api.export('collaborationPicklistModal');
 });

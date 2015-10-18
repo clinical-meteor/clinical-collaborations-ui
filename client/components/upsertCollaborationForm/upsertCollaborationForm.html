@@ -1,6 +1,6 @@
 <template name="upsertCollaborationForm">
   <article id="upsertCollaborationForm" class="page" style="{{getOpacity}}">
-    <h3>Add Collaborations</h3>
+    <h3>Collaboration</h3>
     {{#autoForm
       id="addCollaborationForm"
       collection="Collaborations"
@@ -45,11 +45,11 @@
 
         {{> bump name="requests"  class="collaboratorListClass"   }}
 
-        <button  id="upsertCollaborationButton" type="submit"> Submit </button>
+        <button id="upsertCollaborationButton" type="submit" class="btn-primary"> Submit </button>
         <button type="button" class="cancelAndGoCollaborationList"> Cancel </button>
 
-        {{#if doc}}
-          <button data-_id={{doc._id}} data-name={{doc.name}} type="button" class="removeCollaboration btn btn-primary" style="background-color:red!important;"> Delete Collaboration </button>
+        {{#if this}}
+          <button data-_id={{doc._id}} data-name={{doc.name}} type="button" class="right removeCollaboration btn btn-danger" style="background-color:red!important;">Delete</button>
         {{/if}}
 
 
