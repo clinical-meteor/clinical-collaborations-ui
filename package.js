@@ -16,7 +16,7 @@ Package.onUse(function (api) {
     'grove:less@0.1.1',
     'jquery@1.11.3_2',
     'underscore@1.0.3',
-    'clinical:collaborations@1.0.0',
+    'clinical:collaborations@2.1.2',
     'templating@1.1.1',
     'aldeed:template-extension@3.4.3',
     'cfs:http-methods@0.0.29',
