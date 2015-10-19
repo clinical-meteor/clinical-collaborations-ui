@@ -1,9 +1,9 @@
 
 Package.describe({
   name: 'clinical:collaborations-ui',
-  version: '1.1.6',
-  summary: 'UI components for the ``clinical:collaborations`` package.',
-  git: 'https://github.com/UCSC-MedBook/MedBook-Telescope/tree/master/packages/clinical-collaborations-ui',
+  version: '2.1.6',
+  summary: 'UI components for the clinical:collaborations package.',
+  git: 'https://github.com/clinical-meteor/clinical-collaborations-ui',
   documentation: 'README.md'
 });
 
