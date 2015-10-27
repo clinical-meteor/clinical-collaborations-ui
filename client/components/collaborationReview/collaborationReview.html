@@ -10,16 +10,16 @@
             {{#each requests}}
             <tr>
                 <th> {{this}} </th>
-                <th> <label class="radio-inline"><input type="radio" class="underReview" name="{{this}}" checked>Under review</label> </th>
-                <th> <label class="radio-inline"><input type="radio" class="notApproved" name="{{this}}">Not Appoved</label> </th>
-                <th> <label class="radio-inline"><input type="radio" class="approved" name="{{this}}">Approved</label> </th>
+                <th> <label class="radio-inline"><input type="radio" class="underReview" value="underReview" name="{{this}}" checked>Under review</label> </th>
+                <th> <label class="radio-inline"><input type="radio" class="notApproved" value="notApproved" name="{{this}}">Not Appoved</label> </th>
+                <th> <label class="radio-inline"><input type="radio" class="approved"    value="approved"    name="{{this}}">Approved</label> </th>
             </tr>
             {{/each }}
            </table>
          </form>
          <div class="panelFooter">
-           <button type="submit" class="btn btn-primary reviewCollaboration" > Done </button>
-           <button type="button" class="btn btn-main cancelAndGoCollaborationList" > cancel </button>
+           <button id="doneReviewingBtn" type="submit" class="btn btn-primary reviewCollaboration" > Done </button>
+           <button id="cancelReviewBtn" type="button" class="btn btn-main cancelAndGoCollaborationList" > cancel </button>
          </div>
          <!--
          {{>upsertCollaborationForm doc=this type="update"}}

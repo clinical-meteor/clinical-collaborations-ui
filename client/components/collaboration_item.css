@@ -44,7 +44,7 @@
   display:inline-block;
   box-sizing:border-box;
 }
-.collaborationMarquee {
+.collaborationCard {
   width: 315px;
   min-height:420px;
   padding-top:10px;

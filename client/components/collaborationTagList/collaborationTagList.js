@@ -1,7 +1,7 @@
 
 
 Template.collaborationTagList.helpers({
-  collaboration: function(foo) {
+  collaboration: function() {
     if ('collaboration' in this)
       return this.collaboration;
     var cs = Session.get("collaborationName");

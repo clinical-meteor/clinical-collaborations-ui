@@ -13,65 +13,37 @@ Template.collaborationGrid.helpers({
       }
     });
   }
-
 });
-
-// Template.collaborationGrid.hooks({
-//   rendered: function () {
-//     var focusOn = Session.get("FocusName");
-//     console.log("collaborationGrid rendered focusOn", focusOn);
-//     if (focusOn) {
-//       var box = $("[name='" + focusOn + "']");
-//       if (box && box.length > 0) {
-//         $(".collaboration-focus").removeClass("collaboration-focus");
-//         box.children().addClass("collaboration-focus");
-//         var y = box.offset().top;
-//         console.log("focusOn y=", y);
-//         $('html, body').animate({
-//           scrollTop: y
-//         }, 2000);
-//       }
-//     }
-//   }
-// });
 
 
 
 Template.collaborationGrid.events({
   'click button[name="join"]': function (evt) {
     evt.preventDefault();
-    Meteor.call('collaboration/join', this._id, function (err) {
-      if (err) {
-        console.log('collaboration/join error', err);
-        alert("join failed");
+    Meteor.call('collaboration/join', this._id, function (error) {
+      if (error) {
+        console.log('collaboration/join error', error);
+        //alert("join failed");
+        Session.set('errorMessage', "Failed to join collaboration... " + error);
       } else {
-        alert("You are now part of the collaboration");
+        // alert("You are now part of the collaboration");
+        Session.set('successMessage', "You are now part of the collaboration.");
       }
     });
   },
   'click button[name="apply"]': function (evt) {
     evt.preventDefault();
-    Meteor.call('collaboration/apply', this._id, function (err) {
-      if (err) {
-        console.log('apply error', err);
-        alert("apply failed");
+    Meteor.call('collaboration/apply', this._id, function (error) {
+      if (error) {
+        console.log('apply error', error);
+        // alert("apply failed");
+        Session.set('errorMessage', "Error while applying to collaboration... " + error);
       } else {
-        alert("You have applied to this collaboration");
+        //alert("You have applied to this collaboration");
+        Session.set('successMessage', "You have applied to this collaboration.");
       }
     });
   },
-  'click button[name="leave"]': function (evt) {
-    evt.preventDefault();
-    Meteor.call('collaboration/leave', this._id, function (err) {
-      if (err) {
-        console.log('collaboration/leave error', err);
-        alert("collaboration/leave failed");
-      } else {
-        alert("You have left the collaboration");
-      }
-    });
-  },
-
   'click input[type=submit]': function (e) {
     e.preventDefault();
     var name = $('#name').val();
@@ -140,6 +112,15 @@ function prettyList(cols) {
 
 
 Template.collaborationGridElement.helpers({
+  requiresAdministratorApprovalToJoin: function (){
+    return this.requiresAdministratorApprovalToJoin;
+  },
+  hasAlreadyApplied: function (){
+    return this.hasApplied(Meteor.user().defaultEmail());
+  },
+  isCollaborationMember: function (){
+    return this.hasMember(Meteor.user().defaultEmail());
+  },
   administrators: function () {
     var vv = prettyList(this.administrators);
     return vv;
@@ -169,6 +150,26 @@ Template.collaborationGridElement.helpers({
 
 
 Template.collaborationGridElement.events({
+  'click button[name="leave"]': function (evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    Meteor.call('collaboration/leave', this._id, function (error) {
+      if (error) {
+        // console.log('collaboration/leave error', error);
+        // alert("collaboration/leave failed");
+        Session.set('errorMessage', "Error while leaving collaboration... " + error);
+      } else {
+        // alert("You have left the collaboration");
+        Session.set('successMessage', "You have left the collaboration.");
+      }
+    });
+  },
+  'click .collaborationLink': function (evt){
+    //evt.preventDefault();
+    if (Meteor.user().isMemberOfCollaboration(this._id)) {
+      Router.go('/view/collaboration/' + this._id);
+    }
+  },
   'keyup input[id="addCollaborators"]': function () {
     Collaboration.addCollaborator();
   },

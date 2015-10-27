@@ -3,16 +3,16 @@ exports.command = function (collaborationName) {
     .verify.elementPresent("#collaborationGrid")
     .verify.elementPresent("#collaborationGridElements")
     .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1)")
-    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .post")
-    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .post .cardBody")
-    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .post .cardBody h2")
-    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .post .cardBody h5")
-    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .post .cardBody p")
-    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .post .cardFooter");
+    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1)")
+    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .cardBody")
+    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .cardBody h2")
+    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .cardBody h5")
+    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .cardBody p")
+    .verify.elementPresent("#collaborationGridElements .collaboration:nth-child(1) .cardFooter");
 
   if (collaborationName) {
     this
-      .verify.containsText("#collaborationGridElements .collaboration:nth-child(1) .post .cardBody h2 a", collaborationName);
+      .verify.containsText("#collaborationGridElements .collaboration:nth-child(1) .cardBody h2 a", collaborationName);
   };
 
   return this;

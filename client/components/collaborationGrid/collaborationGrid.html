@@ -2,7 +2,7 @@
 
   <!-- <div id="collaborationGrid" class="page" style="{{getOpacityWithCorner}}"> -->
   <div id="collaborationGrid" class="page">
-    <div id="collaborationGridElements" class="collaboration posts list">
+    <div id="collaborationGridElements" class="posts list">
       {{#each collaboration}}
         {{> collaborationGridElement}}
       {{/each}}
@@ -13,8 +13,8 @@
 
 
 <template name="collaborationGridElement">
-  <a id={{_id}} name="{{name}}" class="collaboration" href="/view/collaboration/{{_id}}">
-    <div class="collaborationMarquee collaboration post">
+  <a id={{_id}} name="{{name}}" class="collaborationLink">
+    <div class="collaborationCard collaboration">
         <div class="cardBody">
           {{#if isCollaborationAdmin}}
               <a class="controls" href="/collaboration-edit/{{name}}"> <i class="fa fa-edit fa-1g" style="float:right"  title="Edit Collaboration"></i></a>
@@ -22,11 +22,11 @@
           <h2><a  href="/collaboration/{{name}}">{{name}}</a></h2>
           <h5>{{owner}}</h5>
 
-            {{#if requiresAdministratorApprovalToJoin}}
-              <h6>Users require administrator approval</h6>
-            {{else}}
-              <h6>Users may add themselves</h6>
-            {{/if}}
+          {{#if requiresAdministratorApprovalToJoin}}
+            <h6>Users require administrator approval</h6>
+          {{else}}
+            <h6>Users may add themselves</h6>
+          {{/if}}
 
           <p>
           {{description}}
@@ -49,7 +49,7 @@
               {{/if}}
               {{#if requests}}
               <center>
-                  <a href="/collaboration-review/{{name}}" data-collaborationName="{{name}}" id="leave" name="leave" type="button" class="btn">
+                  <a href="/collaboration-review/{{name}}" data-collaborationName="{{name}}" name="review" type="button" class="btn review">
                       Review {{requests.length}} requests
                   </a>
               </center>
@@ -71,13 +71,17 @@
                   {{/each}}
                </h6>
             {{else}}
-                <button data-collaborationName="{{name}}" name="leave" type="button" class="leave btn btn-default btn-lg">Leave this collaboration</button>
+                <button name="leave" type="button" class="leave btn btn-default btn-lg">Leave this collaboration</button>
             {{/if}}
           {{else}}
             {{#if requiresAdministratorApprovalToJoin}}
-                <button data-collaborationName="{{name}}" name="apply" type="button" class="apply btn btn-default btn-lg">Apply for membership</button>
+              {{#if hasAlreadyApplied}}
+                <button name="waiting" type="button" class="waiting btn btn-default btn-lg">Waiting for approval</button>
+              {{else}}
+                <button name="apply" type="button" class="apply btn btn-default btn-lg">Apply for membership</button>
+              {{/if}}
             {{else}}
-                <button data-collaborationName="{{name}}" name="join" type="button" class="join btn btn-default btn-lg">Join this collaboration</button>
+                <button name="join" type="button" class="join btn btn-default btn-lg">Join this collaboration</button>
             {{/if}}
           {{/if}}
         </div>

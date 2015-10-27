@@ -1,5 +1,9 @@
 
 exports.command = function (newCollaboration) {
+
+  console.log('-------------------------------------------');
+  console.log('newCollaboration', newCollaboration);
+
   this.verify.elementPresent('#upsertCollaborationForm')
     .verify.elementPresent('#addCollaborationForm');
 
@@ -57,9 +61,27 @@ exports.command = function (newCollaboration) {
       .setValue("#addCollaborationForm input[name='administrators']", administratorsString);
   }
 
-  // radio buttons
-  this.click('#addCollaborationForm input[name="isUnlisted"][value="false"]')
-    .click('#addCollaborationForm input[name="requiresAdministratorApprovalToJoin"][value="false"]');
+
+  if (newCollaboration.requiresAdmin === false) {
+    console.log("newCollaboration.requiresAdmin === false");
+    this.click('#addCollaborationForm input[name="requiresAdministratorApprovalToJoin"][value="false"]');
+  }
+  if (newCollaboration.requiresAdmin === true) {
+    console.log("newCollaboration.requiresAdmin === true");
+    this.click('#addCollaborationForm input[name="requiresAdministratorApprovalToJoin"][value="true"]');
+  }
+
+
+
+
+
+  if (newCollaboration.isUnlisted === false) {
+    this.click('#addCollaborationForm input[name="isUnlisted"][value="false"]');
+  }
+  if (newCollaboration.isUnlisted === true) {
+    this.click('#addCollaborationForm input[name="isUnlisted"][value="true"]');
+  }
+
 
   this.verify.elementPresent('#upsertCollaborationButton')
     .click("#saveCollaborationButton").pause(500);

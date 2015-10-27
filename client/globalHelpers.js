@@ -1,3 +1,6 @@
+Session.setDefault('collaborationSearchFilter', "");
+
+
 Template.registerHelper("isCollaborationMember", function (collaborationId) {
   if (collaborationId) {
     return isCollaborationMember(collaborationId);

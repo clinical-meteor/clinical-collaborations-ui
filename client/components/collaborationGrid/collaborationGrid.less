@@ -11,7 +11,6 @@
     button{
       padding-left: 0px;
     }
-    position: absolute;
     bottom: 0px;
     display: inline-block;
   }
@@ -68,83 +67,98 @@
     padding: 20px;
   }
 
+  .collaborationLink{
+    // position: absolute;
+  }
 
-  .collaborationMarquee {
+  .collaborationCard {
     width: 315px;
     min-height:420px;
     padding-top:10px;
     margin:5px;
     float:left;
     box-sizing:border-box;
+    position: relative;
+  }
+
+  .collaboration{
+    border-left: 2px solid #222222;
+    box-shadow: 3px 3px 6px 3px rgba(160,160,160,.1);
+    background-color: white;
+    opacity: 3;
   }
 
   .collaboration:hover  {
-    cursor:pointer;
+    box-shadow: 3px 3px 6px 3px #222222;
+    opacity: 1;
+    cursor: pointer;
+    background-color: white;
   }
+
 
   .collaboration:hover > h2 > a {
     cursor:pointer;
   }
-  .post-heading {
-      margin-top: 0px;
-  }
-  .post-heading:hover > a {
-  }
+  // .post-heading {
+  //     margin-top: 0px;
+  // }
+  // .post-heading:hover > a {
+  // }
 
-  .collaboration.post:first-child {
-    border-radius:none;
-  }
-  .collaboration.post {
-    // box-shadow:0 1px 3px rgba(26,53,71,.08), 0 0 0 1px rgba(26,53,71,.04), 0 1px 1px rgba(26,53,71,.06);
-    box-shadow: 4px 5px 10px 5px #888888;
-    border-bottom:none;
-    -webkit-border-radius:3px;
-    -moz-border-radius:3px;
-    -ms-border-radius:3px;
-    -o-border-radius:3px;
-    border-radius:3px;
-    background: white;
-    padding: 0px;
-    margin: 0px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    position: relative;
-
-    .modules-group {
-      display: table-cell;
-      vertical-align: middle;
-      color: #427fed;
-      cursor: pointer;
-    }
-    .list {
-      display:inline-block;
-      box-sizing:border-box;
-      // box-shadow: 5px 5px 5px #888888;
-    }
-  }
-  .collaboration.post-thumbnail {
-    float:none;
-  }
-  .collaboration.post-thumbnail-link {
-    max-width:300px;
-    max-height:197px;
-  }
-  .collaboration.post .right-modules {
-    display:none;
-  }
-  .collaboration.post-actions.left-right.cell {
-    display:none;
-  }
-  .collaboration.post-rank {
-    display:none;
-  }
-  .collaboration.post-upvote {
-    display:none;
-  }
-
-  .collaboration-token {
-    font-size:14px;
-  }
+  // .collaboration.post:first-child {
+  //   border-radius:none;
+  // }
+  // .collaboration.post {
+  //   // box-shadow:0 1px 3px rgba(26,53,71,.08), 0 0 0 1px rgba(26,53,71,.04), 0 1px 1px rgba(26,53,71,.06);
+  //   box-shadow: 4px 5px 10px 5px #888888;
+  //   border-bottom:none;
+  //   -webkit-border-radius:3px;
+  //   -moz-border-radius:3px;
+  //   -ms-border-radius:3px;
+  //   -o-border-radius:3px;
+  //   border-radius:3px;
+  //   background: white;
+  //   padding: 0px;
+  //   margin: 0px;
+  //   margin-right: 20px;
+  //   margin-bottom: 20px;
+  //   position: relative;
+  //
+  //   .modules-group {
+  //     display: table-cell;
+  //     vertical-align: middle;
+  //     color: #427fed;
+  //     cursor: pointer;
+  //   }
+  //   .list {
+  //     display:inline-block;
+  //     box-sizing:border-box;
+  //     // box-shadow: 5px 5px 5px #888888;
+  //   }
+  // }
+  // .collaboration.post-thumbnail {
+  //   float:none;
+  // }
+  // .collaboration.post-thumbnail-link {
+  //   max-width:300px;
+  //   max-height:197px;
+  // }
+  // .collaboration.post .right-modules {
+  //   display:none;
+  // }
+  // .collaboration.post-actions.left-right.cell {
+  //   display:none;
+  // }
+  // .collaboration.post-rank {
+  //   display:none;
+  // }
+  // .collaboration.post-upvote {
+  //   display:none;
+  // }
+  //
+  // .collaboration-token {
+  //   font-size:14px;
+  // }
 
   .more-button {
     float:left;
@@ -166,7 +180,7 @@
 // mobile phone layout
 @media only screen and (max-width: 768px) {
   #collaborationGrid{
-    .collaborationMarquee {
+    .collaborationCard {
       width: 100%;
     }
   }

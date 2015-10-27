@@ -12,6 +12,9 @@
 
 
 exports.command = function (newCollaboration) {
+  this
+    .sectionBreak(".reviewUpsertCollaboration()");
+
   this.verify.elementPresent('#upsertCollaborationForm')
     .verify.elementPresent('#addCollaborationForm')
     .verify.elementPresent("#saveFormButton");
