@@ -150,6 +150,11 @@ Template.collaborationGridElement.helpers({
 
 
 Template.collaborationGridElement.events({
+  'click .review': function (event){
+    event.preventDefault();
+    event.stopPropagation();
+    Router.go("/collaboration-review/" + this.name);
+  },
   'click button[name="leave"]': function (evt) {
     evt.preventDefault();
     evt.stopPropagation();
