@@ -153,7 +153,7 @@ Template.collaborationGridElement.events({
   'click .review': function (event){
     event.preventDefault();
     event.stopPropagation();
-    Router.go("/collaboration-review/" + this.name);
+    Router.go("/collaboration-review/" + this._id);
   },
   'click button[name="leave"]': function (evt) {
     evt.preventDefault();

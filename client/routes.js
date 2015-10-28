@@ -33,34 +33,42 @@ Router.route('/view/collaboration/:collaborationId', {
 });
 
 
-// Collaboration Review
-Router.route('/collaboration-review/:name/', {
+Router.route('/collaboration-review/:collaborationId/', {
   name: 'collaborationReviewRoute',
   template: 'collaborationReview',
-  waitOn: function () {
-    return Meteor.subscribe('collaborations');
-  },
-  data: function () {
-    // SECURITY Put in admin check here
-    var coll = Collaborations.findOne({
-      name: this.params.name
-    });
-    console.log("collaboration-edit route", coll);
-    return coll;
-  },
-  onBeforeAction: function () {
-    // SECURITY Put in admin check here
-    var coll = Collaborations.findOne({
-      name: this.params.name
-    });
-    if (coll)
-      Session.set("EditCollaboration", coll)
-    this.next();
-  },
-  onAfterAction: function () {
-    Session.set('collaborationName', this.params.name);
+  data: function (){
+    return Collaborations.findOne({_id: this.params.collaborationId });
   }
 });
+
+//// Collaboration Review
+// Router.route('/collaboration-review/:name/', {
+//   name: 'collaborationReviewRoute',
+//   template: 'collaborationReview',
+//   waitOn: function () {
+//     return Meteor.subscribe('collaborations');
+//   },
+//   data: function () {
+//     // SECURITY Put in admin check here
+//     var coll = Collaborations.findOne({
+//       name: this.params.name
+//     });
+//     console.log("collaboration-edit route", coll);
+//     return coll;
+//   },
+//   onBeforeAction: function () {
+//     // SECURITY Put in admin check here
+//     var coll = Collaborations.findOne({
+//       name: this.params.name
+//     });
+//     if (coll)
+//       Session.set("EditCollaboration", coll)
+//     this.next();
+//   },
+//   onAfterAction: function () {
+//     Session.set('collaborationName', this.params.name);
+//   }
+// });
 
 //
 // // adminNav.push({
