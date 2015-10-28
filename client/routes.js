@@ -33,7 +33,7 @@ Router.route('/view/collaboration/:collaborationId', {
 });
 
 
-Router.route('/collaboration-review/:collaborationId/', {
+Router.route('/review/collaboration/:collaborationId/', {
   name: 'collaborationReviewRoute',
   template: 'collaborationReview',
   data: function (){
