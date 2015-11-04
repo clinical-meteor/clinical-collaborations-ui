@@ -116,10 +116,18 @@ Template.collaborationGridElement.helpers({
     return this.requiresAdministratorApprovalToJoin;
   },
   hasAlreadyApplied: function (){
-    return this.hasApplied(Meteor.user().defaultEmail());
+    if (Meteor.user()) {
+      return this.hasApplied(Meteor.user().defaultEmail());
+    } else {
+      return false;
+    }
   },
   isCollaborationMember: function (){
-    return this.hasMember(Meteor.user().defaultEmail());
+    if (Meteor.user()) {
+      return this.hasMember(Meteor.user().defaultEmail());
+    } else {
+      return false;
+    }
   },
   administrators: function () {
     var vv = prettyList(this.administrators);

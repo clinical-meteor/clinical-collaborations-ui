@@ -3,7 +3,18 @@ Template.registerHelper("Schemas", function () { return Schemas; });
  // Collaboration Grid
 Router.route('collaborationGrid', {
   path: '/grid/collaborations/',
-  template: "collaborationGrid"
+  template: "collaborationGrid",
+  yieldTemplates: {
+    'navbarHeader': {
+      to: 'header'
+    },
+    'navbarFooter': {
+      to: 'footer'
+    },
+    'mainSidebar': {
+      to: 'sidebar'
+    }
+  }
 });
 
  // Add Collaboration

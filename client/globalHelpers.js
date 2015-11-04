@@ -67,7 +67,7 @@ function isCollaborationMember (id) {
 }
 
 function isCollaborationAdmin (collaborationId) {
-  process.env.DEBUG && console.log('isCollaborationAdmin', collaborationId);
+  //process.env.DEBUG && console.log('isCollaborationAdmin', collaborationId);
 
   var collaboration = Collaborations.findOne({
     _id: collaborationId
