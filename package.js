@@ -1,7 +1,7 @@
 
 Package.describe({
   name: 'clinical:collaborations-ui',
-  version: '2.1.16',
+  version: '2.1.17',
   summary: 'UI components for the clinical:collaborations package.',
   git: 'https://github.com/clinical-meteor/clinical-collaborations-ui',
   documentation: 'README.md'
@@ -72,10 +72,11 @@ Package.onUse(function (api) {
 
     'client/components/selectCollaborators/selectCollaborators.less',
     'client/components/selectCollaborators/selectCollaborators.html',
-    'client/components/selectCollaborators/selectCollaborators.js'
+    'client/components/selectCollaborators/selectCollaborators.js',
 
-
-
+    'client/components/collaborationActionButtons/collaborationActionButtons.less',
+    'client/components/collaborationActionButtons/collaborationActionButtons.html',
+    'client/components/collaborationActionButtons/collaborationActionButtons.js'
 
   ], ['client']);
 

@@ -8,7 +8,7 @@ Meteor.startup(function () {
 Template.collaborationPicklistModal.events({
   'click #collaborationPicklistCancelButton': function (){
     Session.set('showCollaborationPicklist', false);
-    Session.set('show_reactive_overlay', false);
+    Session.set('showReactiveOverlay', false);
   },
   'change #collaborationModalSearchInput': function (){
     Session.set('collaborationModalSearchFilter', $('#collaborationModalSearchInput').val());
@@ -18,13 +18,13 @@ Template.collaborationPicklistModal.events({
   },
   "click #collaborationPicklistOkButton": function (event, template) {
     Session.set('showCollaborationPicklist', false);
-    Session.set('show_reactive_overlay', false);
+    Session.set('showReactiveOverlay', false);
   },
   'click .collaborationRow': function (){
     Session.set("selectedCollaborationId", this._id);
     Session.set("collaborationSearchFilter", this.name);
     Session.set('showCollaborationPicklist', false);
-    Session.set('show_reactive_overlay', false);
+    Session.set('showReactiveOverlay', false);
 
     $('input[name="collaborationId"]').val(this._id);
     $('input[name="collaborationName"]').val(this.name);

@@ -13,6 +13,9 @@ Router.route('collaborationGrid', {
     },
     'mainSidebar': {
       to: 'sidebar'
+    },
+    'collaborationActionButtons': {
+      to: 'footerActionElements'
     }
   }
 });
@@ -20,7 +23,21 @@ Router.route('collaborationGrid', {
  // Add Collaboration
 Router.route('addCollaboration', {
   path: '/new/collaboration/',
-  template: "upsertCollaborationForm"
+  template: "upsertCollaborationForm",
+  yieldTemplates: {
+    'navbarHeader': {
+      to: 'header'
+    },
+    'navbarFooter': {
+      to: 'footer'
+    },
+    'mainSidebar': {
+      to: 'sidebar'
+    },
+    'collaborationActionButtons': {
+      to: 'footerActionElements'
+    }
+  }
 });
 
 // View Collaboration
@@ -31,6 +48,20 @@ Router.route('/collaboration/:collaborationName', {
     var collection = Collaborations.find({name: this.params.collaborationName });
     console.log('collection', collection.fetch());
     return collection;
+  },
+  yieldTemplates: {
+    'navbarHeader': {
+      to: 'header'
+    },
+    'navbarFooter': {
+      to: 'footer'
+    },
+    'mainSidebar': {
+      to: 'sidebar'
+    },
+    'collaborationActionButtons': {
+      to: 'footerActionElements'
+    }
   }
 });
 
@@ -40,6 +71,20 @@ Router.route('/view/collaboration/:collaborationId', {
   template: "upsertCollaborationForm",
   data: function (){
     return Collaborations.findOne({_id: this.params.collaborationId });
+  },
+  yieldTemplates: {
+    'navbarHeader': {
+      to: 'header'
+    },
+    'navbarFooter': {
+      to: 'footer'
+    },
+    'mainSidebar': {
+      to: 'sidebar'
+    },
+    'collaborationActionButtons': {
+      to: 'footerActionElements'
+    }
   }
 });
 
@@ -49,6 +94,20 @@ Router.route('/review/collaboration/:collaborationId/', {
   template: 'collaborationReview',
   data: function (){
     return Collaborations.findOne({_id: this.params.collaborationId });
+  },
+  yieldTemplates: {
+    'navbarHeader': {
+      to: 'header'
+    },
+    'navbarFooter': {
+      to: 'footer'
+    },
+    'mainSidebar': {
+      to: 'sidebar'
+    },
+    'collaborationActionButtons': {
+      to: 'footerActionElements'
+    }
   }
 });
 

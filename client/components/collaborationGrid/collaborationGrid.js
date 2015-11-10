@@ -56,12 +56,9 @@ Template.collaborationGrid.events({
       function (error, collaborationName) {
         if (error) {
           console.log(error);
-          throwError(error.reason);
-          clearSeenErrors();
-        } else {
-          $('#name').val('');
-          // throwError('New collaboration "'+collaborationName+'" created');
+          Session.set('errorMessage', error);
         }
+        $('#name').val('');
       }
     );
   }

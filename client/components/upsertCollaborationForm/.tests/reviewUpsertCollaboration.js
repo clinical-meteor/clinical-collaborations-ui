@@ -17,7 +17,6 @@ exports.command = function (newCollaboration) {
 
   this.verify.elementPresent('#upsertCollaborationForm')
     .verify.elementPresent('#addCollaborationForm')
-    .verify.elementPresent("#saveFormButton");
 
   this
     // .verify.elementPresent("#addCollaborationForm input[name='slug']")
