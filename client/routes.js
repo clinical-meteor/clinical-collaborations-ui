@@ -34,7 +34,7 @@ Router.route('addCollaboration', {
     'mainSidebar': {
       to: 'sidebar'
     },
-    'collaborationActionButtons': {
+    'upsertCollaborationActionButtons': {
       to: 'footerActionElements'
     }
   }

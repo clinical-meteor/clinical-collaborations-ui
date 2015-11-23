@@ -1,18 +1,4 @@
-Template.upsertCollaborationForm.onCreated(function () {
 
-});
-Template.upsertCollaborationForm.onRendered(function () {
-
-});
-Template.upsertCollaborationForm.onDestroyed(function () {
-
-});
-
-
-Template.upsertCollaborationForm.helpers({
-
-
-});
 
 Template.upsertCollaborationForm.events({
   'click .removeCollaboration': function () {
