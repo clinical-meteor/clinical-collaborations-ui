@@ -1,12 +1,25 @@
 
-
+Session.setDefault('collaborationSearchFilter', '');
 
 Template.collaborationGrid.helpers({
-  owner: function () {
-    return "foo";
-  },
+  // owner: function () {
+  //   return "foo";
+  // },
   collaboration: function () {
-    return Collaborations.find({}, {
+    return Collaborations.find({$or: [
+      {
+        _id: {
+          $regex: Session.get('collaborationSearchFilter'),
+          $options: 'i'
+        }
+      },
+      {
+        name: {
+          $regex: Session.get('collaborationSearchFilter'),
+          $options: 'i'
+        }
+      }
+  ]}, {
       sort: {
         order: 1,
         name: 1
@@ -18,8 +31,8 @@ Template.collaborationGrid.helpers({
 
 
 Template.collaborationGrid.events({
-  'click button[name="join"]': function (evt) {
-    evt.preventDefault();
+  'click button[name="join"]': function (event) {
+    event.preventDefault();
     Meteor.call('collaboration/join', this._id, function (error) {
       if (error) {
         console.log('collaboration/join error', error);
@@ -160,6 +173,24 @@ Template.collaborationGridElement.events({
     event.stopPropagation();
     Router.go("/review/collaboration/" + this._id);
   },
+  'click .cardBody': function (event){
+    event.preventDefault();
+
+    console.log('click .cardBody', this._id);
+
+    if (Meteor.user().isMemberOfCollaboration(this._id)) {
+      Router.go('/view/collaboration/' + this._id);
+    } else {
+      Router.go('/need-collaboration');
+    }
+  },
+  'click .collaborationRemove': function (tmpl, vent) {
+    if (confirm("Are you sure you want to remove " + this.name + "?")) {
+      Collaborations.remove({
+        _id: this._id
+      });
+    }
+  },
   'click button[name="leave"]': function (evt) {
     evt.preventDefault();
     evt.stopPropagation();
@@ -174,20 +205,7 @@ Template.collaborationGridElement.events({
       }
     });
   },
-  'click .collaborationLink': function (evt){
-    //evt.preventDefault();
-    if (Meteor.user().isMemberOfCollaboration(this._id)) {
-      Router.go('/view/collaboration/' + this._id);
-    }
-  },
   'keyup input[id="addCollaborators"]': function () {
     Collaboration.addCollaborator();
-  },
-  'click .collaborationRemove': function (tmpl, vent) {
-    if (confirm("Are you sure you want to remove " + this.name + "?")) {
-      Collaborations.remove({
-        _id: this._id
-      });
-    }
   }
 });

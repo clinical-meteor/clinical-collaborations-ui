@@ -13,13 +13,13 @@
 
 
 <template name="collaborationGridElement">
-  <a id={{_id}} name="{{name}}" class="collaborationLink">
+  <!-- <a id={{_id}} name="{{name}}"> -->
     <div class="collaborationCard collaboration">
         <div class="cardBody">
           {{#if isCollaborationAdmin}}
               <a class="controls" href="/collaboration-edit/{{name}}"> <i class="fa fa-edit fa-1g" style="float:right"  title="Edit Collaboration"></i></a>
           {{/if}}
-          <h2><a  href="/collaboration/{{name}}">{{name}}</a></h2>
+          <h2 class="collaborationTileTitle"><a class="collaborationTileTitleLink" href="/collaboration/{{name}}">{{name}}</a></h2>
           <h5>{{owner}}</h5>
 
           {{#if requiresAdministratorApprovalToJoin}}
@@ -85,7 +85,5 @@
         </div>
 
     </div>
-
-
-  </a>
+  <!-- </a> -->
 </template>
