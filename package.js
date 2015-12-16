@@ -1,7 +1,7 @@
 
 Package.describe({
   name: 'clinical:collaborations-ui',
-  version: '2.1.19',
+  version: '2.1.20',
   summary: 'UI components for the clinical:collaborations package.',
   git: 'https://github.com/clinical-meteor/clinical-collaborations-ui',
   documentation: 'README.md'
@@ -23,7 +23,7 @@ Package.onUse(function (api) {
     'aldeed:http@0.2.2',
     'clinical:router@2.0.13',
     'pfafman:font-awesome-4@4.2.0_4',
-    'photonic:glass-ui@0.2.4'
+    'clinical:glass-ui@0.3.0'
   ]);
 
 
