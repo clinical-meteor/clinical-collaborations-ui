@@ -23,7 +23,7 @@ Package.onUse(function (api) {
     'aldeed:http@0.2.2',
     'clinical:router@2.0.13',
     'pfafman:font-awesome-4@4.2.0_4',
-    'clinical:glass-ui@1.3.1'
+    'clinical:glass-ui@1.3.9'
   ]);
 
 
