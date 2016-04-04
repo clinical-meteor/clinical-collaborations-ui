@@ -1,7 +1,7 @@
 
 Package.describe({
   name: 'clinical:collaborations-ui',
-  version: '2.1.21',
+  version: '2.3.8',
   summary: 'UI components for the clinical:collaborations package.',
   git: 'https://github.com/clinical-meteor/clinical-collaborations-ui',
   documentation: 'README.md'
@@ -9,7 +9,7 @@ Package.describe({
 
 
 Package.onUse(function (api) {
-  api.versionsFrom('1.1.0.2');
+  api.versionsFrom('1.1.0.3');
   api.use([
     'meteor-platform@1.2.2',
     'http@1.1.0',
