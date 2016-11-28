@@ -1,4 +1,3 @@
-exports.command = function()
-      
+exports.command = function(){      
   return this;
 };

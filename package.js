@@ -1,7 +1,7 @@
 
 Package.describe({
   name: 'clinical:collaborations-ui',
-  version: '2.3.8',
+  version: '2.3.9',
   summary: 'UI components for the clinical:collaborations package.',
   git: 'https://github.com/clinical-meteor/clinical-collaborations-ui',
   documentation: 'README.md'
